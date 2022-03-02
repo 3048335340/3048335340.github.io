@@ -170,6 +170,186 @@
     
     
     <article
+  id="post-2022.3.1"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/03/01/2022.3.1/"
+    >2022.3.2</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/03/01/2022.3.1/" class="article-date">
+  <time datetime="2022-03-01T15:04:50.000Z" itemprop="datePublished">2022-03-01</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="今天的收获"><a href="#今天的收获" class="headerlink" title="今天的收获"></a>今天的收获</h1><p><code>注释</code></p>
+<h1 id="代码区"><a href="#代码区" class="headerlink" title="代码区"></a>代码区</h1><p>内容</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-2022.3.1.复习js的第二天"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/03/01/2022.3.1.%E5%A4%8D%E4%B9%A0js%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9/"
+    >2022.3.1.复习js的第二天</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/03/01/2022.3.1.%E5%A4%8D%E4%B9%A0js%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9/" class="article-date">
+  <time datetime="2022-03-01T15:02:50.000Z" itemprop="datePublished">2022-03-01</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="一天经历的啥"><a href="#一天经历的啥" class="headerlink" title="一天经历的啥"></a>一天经历的啥</h1><p>今天下午程*老师给我们讲课，三个案例。<br>一个图片点击切换上下页，点击数字也切换到点击的页数。俗称’轮播图’<br>一个是获取点击的按钮，数字按钮<br>一个手风琴特效是个半个的，因为他有很多不足，只是个思想<br><code>注释</code></p>
+<h1 id="代码区"><a href="#代码区" class="headerlink" title="代码区"></a>代码区</h1><p>这是加粗的字体<strong>粗</strong></p>
+<p>这是倾斜的字体<em>倾斜</em><br>这是删除的字体<del>删除线</del></p>
+<h2 id="第一部分轮播图"><a href="#第一部分轮播图" class="headerlink" title="第一部分轮播图"></a>第一部分轮播图</h2><textarea style="width:770px;height:500px">
+<body>
+    <div class="view">
+        <img src="" alt="">
+        <button class="prev">上一张</button>
+        <button class="next">下一张</button>
+    </div>
+</body>
+
+<script>
+    var img=document.getElementsByTagName("img")[0];
+    var arr=["b1.jpg","b2.jpg","b3.jpg","b4.jpg"];
+    img.src="images/"+arr[0];
+
+    var next=document.getElementsByClassName("next")[0];
+    var count=0;
+    next.onclick=function(){
+        count++;
+        if(count>arr.length-1){
+            count=0;
+        }
+        img.src="images/"+arr[count];
+    }
+
+    var prev=document.getElementsByClassName("prev")[0];
+    prev.onclick=function(){
+        count--;
+        if(count<0){
+            count=arr.length-1;
+        }
+    img.src="images/"+arr[count]
+    }
+</script>
+
+</textarea>
+
+<h2 id="第二部分数字按钮"><a href="#第二部分数字按钮" class="headerlink" title="第二部分数字按钮"></a>第二部分数字按钮</h2><textarea style="width:770px;height:500px">
+<body>
+    <div class="view">
+        <img src="images/b1.jpg" alt="">
+        <img src="images/b2.jpg" alt="">
+        <img src="images/b3.jpg" alt="">
+        <img src="images/b4.jpg" alt="">
+    </div>
+    <div id="btns">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+    </div>
+</body>
+<script>
+    var img=document.getElementsByClassName("view")[0].getElementsByTagName("img");
+    var btns=document.getElementById("btns").getElementsByTagName("button");
+
+    //默认显示第一张图片
+    img[0].style.display="block";
+    btns[0].style.color="red";
+
+    var x=0;
+    for(var i=0;i<btns.length;i++){
+        btns[i].index=i;
+        btns[i].onclick=function(){
+            //隐藏当前显示的图片
+            img[x].style.display="none";
+            btns[x].style.color="black";
+            //即将要显示的图片 this.index
+            img[this.index].style.display="block";
+            btns[this.index].style.color="red";
+            x=this.index;//记录当前显示索引
+        }
+    }
+</script>
+
+
+</textarea>
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-我的第一篇文章"
   class="article article-type-post"
   itemscope
@@ -181,7 +361,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/02/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"
+  <a class="article-title" href="/2022/02/28/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"
     >我的第一篇文章</a> 
 </h2>
  
@@ -190,15 +370,17 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/02/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" class="article-date">
-  <time datetime="2022-02-22T09:33:58.000Z" itemprop="datePublished">2022-02-22</time>
+      <a href="/2022/02/28/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" class="article-date">
+  <time datetime="2022-02-28T09:33:58.000Z" itemprop="datePublished">2022-02-28</time>
 </a>    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="第一篇"><a href="#第一篇" class="headerlink" title="第一篇"></a>第一篇</h2><p>内容</p>
+  <h2 id="第一篇"><a href="#第一篇" class="headerlink" title="第一篇"></a>第一篇</h2><p>内容<br><code>123123</code></p>
 <h2 id="第二篇"><a href="#第二篇" class="headerlink" title="第二篇"></a>第二篇</h2><p>内容</p>
+<p>这是加粗的字体<strong>粗</strong></p>
+<p>这是倾斜的字体<em>倾斜</em><br>这是删除的字体<del>删除线</del></p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></p>
  
       <!-- reward -->
@@ -360,15 +542,15 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/tags">标签</a>
+      <a class="nav-item-link" href="/label">标签</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+      <a class="nav-item-link" href="/tags">旅行</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" target="_blank" rel="noopener" href="http://shenyu-vip.lofter.com">摄影</a>
+      <a class="nav-item-link" target="_blank" rel="noopener" href="http://yunzhu3414.lofter.com">摄影</a>
     </li>
     
     <li class="nav-item">
@@ -376,7 +558,7 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
+      <a class="nav-item-link" href="/about">关于我</a>
     </li>
     
   </ul>
